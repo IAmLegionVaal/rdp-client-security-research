@@ -1,0 +1,14 @@
+let Lookback = 24h;
+let RdpProcesses =
+    DeviceProcessEvents
+    | where Timestamp > ago(Lookback)
+    | where FileName =~ "mstsc.exe"
+    | project DeviceId, DeviceName, RdpStart=Timestamp, AccountName=InitiatingProcessAccountName, RdpCommandLine=ProcessCommandLine;
+DeviceFileEvents
+| where Timestamp > ago(Lookback)
+| where FolderPath has_any ("\\Downloads\\", "\\Desktop\\", "\\AppData\\Local\\Temp\\")
+| where FileName matches regex @"(?i).+\.(exe|dll|ps1|vbs|js|hta|bat|cmd|scr)$"
+| join kind=inner RdpProcesses on DeviceId
+| where Timestamp between (RdpStart .. RdpStart + 2h)
+| project Timestamp, DeviceName, AccountName, FileName, FolderPath, SHA256, RdpStart, RdpCommandLine
+| order by Timestamp desc
