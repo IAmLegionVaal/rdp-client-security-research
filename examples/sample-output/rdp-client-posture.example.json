@@ -1,0 +1,14 @@
+{
+  "ComputerName": "LAB-WIN11-01",
+  "UserName": "analyst",
+  "TimestampUtc": "2026-07-07T18:00:00.0000000Z",
+  "MstscPath": "C:\\Windows\\System32\\mstsc.exe",
+  "ActiveRdpProcesses": [],
+  "PolicyState": {
+    "PolicyPath": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services",
+    "DisableClipboardRedirection": 1,
+    "DisableDriveRedirection": 1,
+    "DisablePrinterRedirection": 1,
+    "DisablePnPRedirection": 1
+  }
+}
