@@ -1,0 +1,14 @@
+<Sysmon schemaversion="4.90">
+  <EventFiltering>
+    <ProcessCreate onmatch="include">
+      <ParentImage condition="end with">\mstsc.exe</ParentImage>
+      <Image condition="end with">\cmd.exe</Image>
+      <Image condition="end with">\powershell.exe</Image>
+      <Image condition="end with">\pwsh.exe</Image>
+      <Image condition="end with">\wscript.exe</Image>
+      <Image condition="end with">\cscript.exe</Image>
+      <Image condition="end with">\mshta.exe</Image>
+      <Image condition="end with">\rundll32.exe</Image>
+    </ProcessCreate>
+  </EventFiltering>
+</Sysmon>
