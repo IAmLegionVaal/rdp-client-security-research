@@ -1,0 +1,5 @@
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "mstsc.exe"
+| where FileName in~ ("cmd.exe", "powershell.exe", "pwsh.exe", "wscript.exe", "cscript.exe", "mshta.exe", "rundll32.exe")
+| project Timestamp, DeviceName, InitiatingProcessAccountName, InitiatingProcessFileName, FileName, ProcessCommandLine, InitiatingProcessCommandLine
+| order by Timestamp desc
